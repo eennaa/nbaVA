@@ -11,18 +11,21 @@
             <li class="nav-item">
                 <a class="nav-link active" href="/">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/logout">{{ auth()->user() ? "Logout" : "" }}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/login">{{ auth()->user() ? "" : "Login"}}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/register">{{ auth()->user() ? "" : "Register"}}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">{{ auth()->user() ? auth()->user()->name : ""}}</a>
-            </li>
+            @if(auth()->user())
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{  auth()->user()->name }}</a>
+                </li>
+            @else            
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+            @endif
             <!-- <li class="nav-item">
                 <a class="nav-link disabled" href="#">Disabled</a>
             </li> -->
