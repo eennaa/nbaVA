@@ -22,3 +22,7 @@ Route::get('/players/{id}', 'PlayerController@show');
 
 Route::get('/register', 'UserController@create');
 Route::post('/register', 'UserController@store');
+
+Route::get('/login', 'LoginController@loginview');
+Route::post('/login', 'LoginController@login');
+Route::get('/logout', 'LoginController@logout');

@@ -15,11 +15,11 @@ class UserController extends Controller
     public function store(RegisterUsers $request)
     {
         
-        $validated = $request->validated();
-       
-        
-                
-        
+        $this-> validate(request(), ['name' => 'bail|required|max:255',
+                                    'email' => 'bail|required|email',
+                                    'password' => 'bail|required|min:6|confirmed',
+                                    'password_confirmation' => 'required']);
+                 
         $user = \App\User::create([
             'name' => request('name'),
             'email' => request('email'),
