@@ -26,3 +26,5 @@ Route::post('/register', 'UserController@store');
 Route::get('/login', 'LoginController@loginview');
 Route::post('/login', 'LoginController@login');
 Route::get('/logout', 'LoginController@logout');
+
+Route::post('/comment', 'CommentController@post');

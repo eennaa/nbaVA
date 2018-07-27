@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Http\Requests\RegisterUsers;
 
+use App\Mail\VerifyUser;
+use Illuminate\Support\Facades\Mail;
+
 class UserController extends Controller
 {
     public function __construct()
@@ -31,8 +34,10 @@ class UserController extends Controller
             'password' => bcrypt(request('password'))
         ]);
         
-        auth()->login($user);
+        // auth()->login($user);
+        Mail::to($user)->send(new VerifyUser($user));
 
-        return redirect('/');
+        return redirect('/login')->withErrors([
+                                    'message' => 'Please check your email account. We sent you verification link']);
     }
 }

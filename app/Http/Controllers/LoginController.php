@@ -25,13 +25,21 @@ class LoginController extends Controller
                                     'password'=> 'required|min:6']);
 
         $credentials = request(['email', 'password']);
-        if (!auth()->attempt($credentials)){   
         
+
+            if (!auth()->attempt($credentials)){  
+                        
             return redirect()->back()->withErrors([
                 'message'=> 'Bad credentials. Please try again'
             ]); 
-        }
-        
+            }
+            elseif( auth()->user()->is_verified == 0 )
+            {
+                auth()->logout();
+                return redirect()->back()->withErrors([
+                    'message'=> 'You are not verified user. Please check your email and follow the verification link']);
+            }
+       
         return redirect('/');
         
    }

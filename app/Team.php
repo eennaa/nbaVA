@@ -10,4 +10,9 @@ class Team extends Model
     {
         return $this->hasMany('App\Player');
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
 }
