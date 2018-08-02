@@ -18,5 +18,7 @@ class TeamsController extends Controller
         // dd($team->players);
         return view('teams.show', compact('team'));
     }
+
+    
     //
 }

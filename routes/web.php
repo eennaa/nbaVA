@@ -27,4 +27,6 @@ Route::get('/login', 'LoginController@loginview');
 Route::post('/login', 'LoginController@login');
 Route::get('/logout', 'LoginController@logout');
 
-Route::post('/comment', 'CommentController@post');
+Route::post('/comment', 'CommentController@store');
+
+Route::get('/user/verify/{token}', 'UserController@verifyUser');
